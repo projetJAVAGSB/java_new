@@ -191,7 +191,7 @@ public class frmListerMedicament extends javax.swing.JFrame {
         mdlInfos.loadDatas6Colonnes(fm.getAllMedicaments());
         // On met à jour le modèle du JTable
         tblInfos.setModel(mdlInfos);
-        
+        //test de push
 
 
 
