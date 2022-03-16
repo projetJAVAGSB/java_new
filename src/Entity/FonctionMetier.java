@@ -47,12 +47,12 @@ public class FonctionMetier implements IMetier
         ArrayList<Medicament> lesMedicaments = new ArrayList<>();
         try {
             Connection cnx = ConnexionBDD.getCnx();
-            PreparedStatement ps = cnx.prepareStatement("select m.depotlegal, m.nomcommercial , f.libelle , m.prixechantillon,m.composition,m.effets,m.contreindic from medicament m inner join famille f on m.DEPOTLEGAL = f.CODE");
+            PreparedStatement ps = cnx.prepareStatement("select m.depotlegal, m.nomcommercial , m.prixechantillon,m.composition,m.effets,m.contreindic from medicament m;");
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
                 
-                Medicament m = new Medicament(rs.getInt("m.depotlegal"),rs.getString("m.nomcommercial"), rs.getString("f.libelle"), rs.getInt("m.prixechantillon"), rs.getString("m.composition"),rs.getString("m.effets"),rs.getString("m.contreindic"));
+                Medicament m = new Medicament(rs.getInt("m.depotlegal"),rs.getString("m.nomcommercial"), rs.getInt("m.prixechantillon"), rs.getString("m.composition"),rs.getString("m.contreindic"));
                 lesMedicaments.add(m);
             }
             ps.close();

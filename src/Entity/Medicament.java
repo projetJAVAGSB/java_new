@@ -28,7 +28,16 @@ public class Medicament
     
     private int code;
     
-    
+      public Medicament(int unDepot, String unNom,float unPrix, String uneCompo,String unContreIndi)
+    {
+       depotLegal=unDepot;
+       nomCommercial=unNom;
+       prixEchantillion=unPrix;
+       composition=uneCompo;
+       contreIndication=unContreIndi;
+      
+      
+    } 
     
     
     public Medicament(int unDepot, String unNom,String uneFamille,float unPrix, String uneCompo,String unEffet,String unContreIndi)
