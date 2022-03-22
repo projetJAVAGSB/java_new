@@ -26,7 +26,7 @@ import java.util.ArrayList;
     public void InsererUnMedicament(String uneCompo,String unNom,float unPrix,String unEffet,String uneFamille,String unContreIndi);
     public void ajouterMedicament(Medicament unMedicament);
     //public void InsererUnMedicament(String unNom,String uneCompo,String unEffet, String unContreIndi,  float unPrix,  String uneFamille);
-    public void modifierMedoc(String unDepo,String unNom,float unPrix,String unEffet,String uneFamille,String unContreIndi);
+    public void modifierMedoc(int unDepo,String unNom,String uneCompo,float unPrix,String unEffet,String uneFamille,String unContreIndi);
     public Medicament getLeMedicament(int code);
     
     
