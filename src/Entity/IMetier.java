@@ -33,6 +33,7 @@ import java.util.ArrayList;
     //fonction Individus :
     public void modifierIndividu(String unLabelle, int unCode);
     public ArrayList<Individu> GetAllIndividus();
+    //public ArrayList<Individu> GetAllIndividusGraph();
     public void InsererIndividu(String libelle);
     public ArrayList<Individu>GetNomIndividus();
     
