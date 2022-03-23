@@ -55,6 +55,9 @@ public void InsererInteraction(int numMedoc,int numMedocperturber);
  //fonction perturbateur :    
  public ArrayList<Interagir>GetAllPerturbateur();
    
+ 
+ //Graphique
+ public ArrayList<Graph1> GetGraph1(String lblIndiv);
     
 }
 

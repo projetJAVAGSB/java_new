@@ -7,11 +7,14 @@ package Vues;
 
 import Entity.ConnexionBDD;
 import Entity.FonctionMetier;
+import Entity.Graph1;
 import java.util.Map;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -128,25 +131,86 @@ public class frmStat extends javax.swing.JFrame {
     private void btnGraph1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraph1MouseClicked
         // TODO add your handling code here:
          // UNE COURBE
-        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
+//        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
+//        
+//        for (Map.Entry valeur : fm.GetDatasGraphique1(cboActions.getSelectedItem().toString()).entrySet())
+//        {
+//            donnees.setValue(Double.parseDouble(valeur.getValue().toString()), cboActions.getSelectedItem().toString(), valeur.getKey().toString());
+//        }
+//       
+//        JFreeChart chart1 = ChartFactory.createLineChart("le nombre de prescritption par medicament  "+cboActions.getSelectedItem().toString(), "Type individue ", "", donnees);
+//        ChartFrame fra = new ChartFrame("Graphique n°1", chart1);
+//        fra.pack();
+//        fra.setVisible(true);
+
+
+            ConnexionBDD bdd = new ConnexionBDD();
+        FonctionMetier fm = new FonctionMetier();
+         DefaultCategoryDataset source1 = new DefaultCategoryDataset();
         
-        for (Map.Entry valeur : fm.GetDatasGraphique1(cboActions.getSelectedItem().toString()).entrySet())
+        for(Graph1 g :fm.GetGraph1(cboActions.getSelectedItem().toString()))
         {
-            donnees.setValue(Double.parseDouble(valeur.getValue().toString()), cboActions.getSelectedItem().toString(), valeur.getKey().toString());
+            
+         source1.setValue( g.getNbPrescription(),cboActions.getSelectedItem().toString(),String.valueOf(g.getLblMedicament()));
         }
-       
-        JFreeChart chart1 = ChartFactory.createLineChart("le nombre de prescritption par medicament  "+cboActions.getSelectedItem().toString(), "Type individue ", "", donnees);
-        ChartFrame fra = new ChartFrame("Graphique n°1", chart1);
+        JFreeChart chart2= ChartFactory.createLineChart("nombre de travailleur par années ", "années", "nombres", source1);
+        ChartFrame fra = new ChartFrame("Graphique n°1", chart2);
         fra.pack();
         fra.setVisible(true);
+
+
     }//GEN-LAST:event_btnGraph1MouseClicked
 
     private void btnGraph2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraph2MouseClicked
         // TODO add your handling code here:
+        // CAMENBERT
+        DefaultPieDataset donnees = new DefaultPieDataset();
+        
+        for (Map.Entry valeur : fm.GetDatasGraphique2().entrySet())
+        {
+            donnees.setValue(valeur.getKey().toString(), Integer.parseInt(valeur.getValue().toString()));
+        }
+
+        JFreeChart chart1 = ChartFactory.createPieChart(
+        "Nombre d'actions par trader",
+        donnees,
+        true, // légende
+        true, // info bulle
+        true // url
+        );
+        ChartFrame frame = new ChartFrame("Graphique n°2", chart1);
+        frame.pack();
+        frame.setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_btnGraph2MouseClicked
 
     private void btnGraph3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraph3MouseClicked
         // TODO add your handling code here:
+        
+        // HISTOGRAMME
+        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
+        
+        for (Map.Entry valeur : fm.GetDatasGraphique3().entrySet())
+        {
+            Double prix = Double.parseDouble(((String[])valeur.getValue())[1].toString());
+            String nomTrader = ((String[])valeur.getValue())[0].toString();
+            String nomAction = ((String[])valeur.getValue())[2].toString();
+            //donnees.setValue(prix,nomAction,nomTrader);
+            donnees.setValue(prix,nomTrader,nomAction);
+        }
+        
+        JFreeChart chart1 = ChartFactory.createBarChart(
+        "Prix d'achat des actions par trader",
+        "Nom des traders",
+        "Prix d'achats",
+        donnees,
+        PlotOrientation.VERTICAL,
+        true, true, false);
+        ChartFrame frame = new ChartFrame("Graphique n°3", chart1);
+        frame.pack();
+        frame.setVisible(true);
     }//GEN-LAST:event_btnGraph3MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

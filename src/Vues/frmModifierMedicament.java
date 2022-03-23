@@ -209,12 +209,12 @@ public class frmModifierMedicament extends javax.swing.JFrame {
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
 
-        //fm.InsererUnMedicament(txtComp.getText(),txtNom.getText(), Float.parseFloat(txtPrix.getText()), txtEffet.getText(),txtFamille.getText(),txtContre1.getText());
-        fm.modifierMedoc(txtNom.getText(),txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(),txtContre1.getText(), txtFamille.getText());
-        JOptionPane.showMessageDialog(this,"Votre médicament a bien été modifier","Validation",JOptionPane.PLAIN_MESSAGE);
-
-
-
+//        //fm.InsererUnMedicament(txtComp.getText(),txtNom.getText(), Float.parseFloat(txtPrix.getText()), txtEffet.getText(),txtFamille.getText(),txtContre1.getText());
+//        fm.modifierMedoc(txtNom.getText(),txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(),txtContre1.getText(), txtFamille.getText());
+//        JOptionPane.showMessageDialog(this,"Votre médicament a bien été modifier","Validation",JOptionPane.PLAIN_MESSAGE);
+//
+//
+//
 
 
 

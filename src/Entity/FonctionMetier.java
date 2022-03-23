@@ -503,29 +503,113 @@ public class FonctionMetier implements IMetier
     }
     
     
-public HashMap<String,Double> GetDatasGraphique1(String lblIndiv)
+//public HashMap<String,Double> GetDatasGraphique1(String lblIndiv)
+//    {
+//        // Une HashMap est une collection dans laquelle
+//        // on stocke une clé et une valeur
+//        // Dans cet exemple, la clé est une chaîne de caractères
+//        // qui correspond au nom du trader
+//        // La valeur est un double qui correspond au prix d'achat.
+//        
+//        // Dans ce type de collection la clé est UNIQUE : donc
+//        // pas de doublons possibles.
+//        // On considère ici que 2 traders n'auront pas le même nom :)
+//        HashMap<String, Double> datas = new HashMap();
+//        try {
+//             Connection cnx = ConnexionBDD.getCnx();
+//             PreparedStatement ps = cnx.prepareStatement("select prescrire.DEPOTLEGAL, COUNT(prescrire.CODE) as compteur\n" +
+//                                    "from prescrire\n" +
+//                                    "LEFT join medicament   ON prescrire.DEPOTLEGAL= medicament.DEPOTLEGAL\n" +
+//                                    "LEFT join type_individu ON  prescrire.CODE= type_individu.TIN_CODE\n" +
+//                                    "WHERE type_individu.TIN_LIBELLE ='"+lblIndiv+"'");
+//             ResultSet rs = ps.executeQuery();
+//            while(rs.next())
+//            {
+//                datas.put(rs.getString(1), rs.getDouble(2));
+//            }
+//            rs.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
+//        } 
+//        return datas;
+//    }
+    @Override
+        public ArrayList<Graph1> GetGraph1(String lblIndiv) 
     {
-        // Une HashMap est une collection dans laquelle
-        // on stocke une clé et une valeur
-        // Dans cet exemple, la clé est une chaîne de caractères
-        // qui correspond au nom du trader
-        // La valeur est un double qui correspond au prix d'achat.
+     ArrayList<Graph1>mesData1= new ArrayList<>();
         
-        // Dans ce type de collection la clé est UNIQUE : donc
-        // pas de doublons possibles.
-        // On considère ici que 2 traders n'auront pas le même nom :)
-        HashMap<String, Double> datas = new HashMap();
+        Connection cnx =  ConnexionBDD.getCnx();
+        PreparedStatement ps;
         try {
-             Connection cnx = ConnexionBDD.getCnx();
-             PreparedStatement ps = cnx.prepareStatement("select prescrire.DEPOTLEGAL, COUNT(prescrire.CODE) as compteur\n" +
-                                    "from prescrire\n" +
-                                    "LEFT join medicament   ON prescrire.DEPOTLEGAL= medicament.DEPOTLEGAL\n" +
-                                    "LEFT join type_individu ON  prescrire.CODE= type_individu.TIN_CODE\n" +
-                                    "WHERE type_individu.TIN_LIBELLE ='"+lblIndiv+"'");
-             ResultSet rs = ps.executeQuery();
+            ps = cnx.prepareStatement("select medicament.NOMCOMMERCIAL, COUNT(prescrire.CODE) as compteur\n" +
+"                                    from medicament\n" +
+"                                    inner join prescrire   ON medicament.DEPOTLEGAL= prescrire.DEPOTLEGAL\n" +
+"                                   inner join type_individu ON  prescrire.CODE= type_individu.TIN_CODE\n" +
+"                                   WHERE type_individu.TIN_LIBELLE ='"+lblIndiv+"'" +
+"                                   group by medicament.NOMCOMMERCIAL");
+            ResultSet rs = ps.executeQuery();
+        
+            
+             while(rs.next())
+            {
+                Graph1 dat  = new Graph1(rs.getInt("compteur"),rs.getString("NOMCOMMERCIAL"));
+                mesData1.add(dat);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mesData1;
+    
+      }
+        
+        
+        
+        
+        
+        public HashMap<String,Integer> GetDatasGraphique2() 
+    {
+        HashMap<String, Integer> datas = new HashMap();
+        try {
+            Connection cnx =  ConnexionBDD.getCnx();
+        PreparedStatement ps;
+            
+            ps = cnx.prepareStatement("select famille.LIBELLE, COUNT(medicament.DEPOTLEGAL) as compteur\n" +
+    "from famille\n" +
+    "INNER join medicament   ON famille.CODE= medicament.CODE\n" +
+    "group by famille.LIBELLE");
+            ResultSet rs = ps.executeQuery();
+           
             while(rs.next())
             {
-                datas.put(rs.getString(1), rs.getDouble(2));
+                datas.put(rs.getString(1), rs.getInt(2));
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return datas;
+    }
+    
+    public HashMap<Integer,String[]> GetDatasGraphique3()
+    {
+        HashMap<Integer,String[]> datas = new HashMap();
+        try {
+              Connection cnx =  ConnexionBDD.getCnx();
+            PreparedStatement ps;
+           
+            ps = cnx.prepareStatement("select medicament.NOMCOMMERCIAL, COUNT(prescrire.CODE) as compteur ,type_individu.TIN_LIBELLE\n" +
+"                                    from medicament\n" +
+"                                    inner join prescrire   ON medicament.DEPOTLEGAL= prescrire.DEPOTLEGAL\n" +
+"                                   inner join type_individu ON  prescrire.CODE= type_individu.TIN_CODE\n" +
+"                                   \n" +
+"                                   group by medicament.NOMCOMMERCIAL");
+            ResultSet rs = ps.executeQuery();
+            int i = 1;
+            while(rs.next())
+            {
+                datas.put(i, new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                i++;
             }
             rs.close();
         } catch (SQLException ex) {
@@ -537,9 +621,9 @@ public HashMap<String,Double> GetDatasGraphique1(String lblIndiv)
 
 
 
-    public void modifierMedoc(String text, String text0, float parseFloat, String text1, String text2, String text3) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public void modifierMedoc(String text, String text0, float parseFloat, String text1, String text2, String text3) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     }
 
 
