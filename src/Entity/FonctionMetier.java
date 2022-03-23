@@ -261,7 +261,7 @@ public class FonctionMetier implements IMetier
         rs.next();
         int numDose = rs.getInt(1);
         //ps = cnx.prepareStatement("insert into prescrire("+numTypeeIndividu+",'"+numDose+"','"+numCodeMedoc+"','"+posologie);
-        ps = cnx.prepareStatement("insert into prescrire values ("+numCodeMedoc+","+numTypeeIndividu+","+numDose+",'"+posologie+"')");
+        ps = cnx.prepareStatement("insert into prescrire values ("+numTypeeIndividu+","+numDose+","+numCodeMedoc+",'"+posologie+"')");
         
 //        select m.NOMCOMMERCIAL, t.tin_libelle, d.forme, p.possologie from medicament m inner join prescrire p on m.DEPOTLEGAL = p.CODE inner JOIN type_individu t on p.CODE = t.TIN_CODE INNER JOIN dosage d on p.CODE = d.CODE'"
         ps.executeUpdate();

@@ -77,11 +77,11 @@ public class frmStat extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Le nombre de prescritption par medicament");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Repartition des medicaments par famille");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Le nombre de prescritption par medicament");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,9 +101,9 @@ public class frmStat extends javax.swing.JFrame {
                             .addComponent(btnGraph2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                             .addComponent(btnGraph3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnGraph1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addComponent(cboActions, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))))
+                        .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +153,7 @@ public class frmStat extends javax.swing.JFrame {
             
          source1.setValue( g.getNbPrescription(),cboActions.getSelectedItem().toString(),String.valueOf(g.getLblMedicament()));
         }
-        JFreeChart chart2= ChartFactory.createLineChart("nombre de travailleur par années ", "années", "nombres", source1);
+        JFreeChart chart2= ChartFactory.createLineChart("le nombre de prescritption par medicament ", "médicament", "nombres", source1);
         ChartFrame fra = new ChartFrame("Graphique n°1", chart2);
         fra.pack();
         fra.setVisible(true);
@@ -172,7 +172,7 @@ public class frmStat extends javax.swing.JFrame {
         }
 
         JFreeChart chart1 = ChartFactory.createPieChart(
-        "Nombre d'actions par trader",
+        "repartition des medicaments par famille",
         donnees,
         true, // légende
         true, // info bulle
@@ -202,9 +202,9 @@ public class frmStat extends javax.swing.JFrame {
         }
         
         JFreeChart chart1 = ChartFactory.createBarChart(
-        "Prix d'achat des actions par trader",
-        "Nom des traders",
-        "Prix d'achats",
+        "Nombre de medicament par famille",
+        "Nom des types",
+        "Nombre medicament",
         donnees,
         PlotOrientation.VERTICAL,
         true, true, false);
