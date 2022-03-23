@@ -103,10 +103,10 @@ public class frmInteraction1 extends javax.swing.JFrame {
         jLabel2.setText("Liste Médicament : ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Médicaments Autorisés : ");
+        jLabel3.setText("Médicaments  Interdit : ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Médicaments Interdit :");
+        jLabel4.setText("Médicaments Autorisés :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
