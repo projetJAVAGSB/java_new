@@ -630,20 +630,16 @@ public class FonctionMetier implements IMetier
     @Override
     public boolean GetAllUser(String pseudoUser) 
     {
-        
+        boolean trouve = false;
         try
         {
             Connection cnx = ConnexionBDD.getCnx();
             PreparedStatement ps = cnx.prepareStatement("select id, pseudo, mdp from utilisateur  where pseudo = '"+pseudoUser+"' ");
             ResultSet rs = ps.executeQuery();
-//            if(ps.execute())
-//            {
-//                return false; 
-//            }
-//            else
-//            {
-//                return true;
-//            }
+            if(rs.next())
+            {
+                trouve = true; 
+            }
            
         } catch (SQLException ex) {
             Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -652,7 +648,7 @@ public class FonctionMetier implements IMetier
             
         }
         
-        return false;
+        return trouve;
        
     }
     
