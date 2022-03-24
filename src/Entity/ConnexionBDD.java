@@ -30,7 +30,7 @@ public class ConnexionBDD
             // L'objet connexion à la BDD avec le nom de la base, le user et le password
 //            cnx = DriverManager.getConnection("jdbc:mysql://localhost/projetmedicament?serverTimezone="
 //                    + TimeZone.getDefault().getID(), "root", "");
- cnx = DriverManager.getConnection("jdbc:mysql://localhost/equipedavid?serverTimezone="
+ cnx = DriverManager.getConnection("jdbc:mysql://localhost/projetmedicament?serverTimezone="
                     + TimeZone.getDefault().getID(), "root", "");
         }
         catch (ClassNotFoundException ex)
