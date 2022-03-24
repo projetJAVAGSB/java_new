@@ -48,12 +48,14 @@ public class FonctionMetier implements IMetier
         ArrayList<Medicament> lesMedicaments = new ArrayList<>();
         try {
             Connection cnx = ConnexionBDD.getCnx();
-            PreparedStatement ps = cnx.prepareStatement("select m.depotlegal, m.nomcommercial , m.prixechantillon,m.composition,m.effets,m.contreindic from medicament m;");
+            PreparedStatement ps = cnx.prepareStatement("select m.DEPOTLEGAL, m.NOMCOMMERCIAL, m.COMPOSITION, m.EFFETS,m.CONTREINDIC, m.PRIXECHANTILLON, f.LIBELLE \n" +
+"from medicament m \n" +
+    "inner join famille f on f.CODE=m.CODE;");
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
                 
-                Medicament m = new Medicament(rs.getInt("m.depotlegal"),rs.getString("m.nomcommercial"), rs.getInt("m.prixechantillon"), rs.getString("m.composition"),rs.getString("m.contreindic"));
+               Medicament m = new Medicament(rs.getInt("m.depotlegal"),rs.getString("m.nomcommercial"),rs.getString("f.LIBELLE"), rs.getInt("m.prixechantillon"),rs.getString("m.composition"),rs.getString("m.EFFETS"), rs.getString("m.contreindic"));
                 lesMedicaments.add(m);
             }
             ps.close();
@@ -624,6 +626,38 @@ public class FonctionMetier implements IMetier
 //    public void modifierMedoc(String text, String text0, float parseFloat, String text1, String text2, String text3) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
+
+    @Override
+    public boolean GetAllUser(String pseudoUser) 
+    {
+        
+        try
+        {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("select id, pseudo, mdp from utilisateur  where pseudo = '"+pseudoUser+"' ");
+            ResultSet rs = ps.executeQuery();
+//            if(ps.execute())
+//            {
+//                return false; 
+//            }
+//            else
+//            {
+//                return true;
+//            }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
+            return true;
+            
+            
+        }
+        
+        return false;
+       
+    }
+    
+  
+    
     }
 
 

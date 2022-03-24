@@ -62,11 +62,6 @@ public class frmInscription extends javax.swing.JFrame {
                 btnCoMouseClicked(evt);
             }
         });
-        btnCo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCoActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Inscription");
@@ -147,10 +142,6 @@ public class frmInscription extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCoActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
             ConnexionBDD cnx = new ConnexionBDD();
@@ -181,6 +172,12 @@ public class frmInscription extends javax.swing.JFrame {
          }
          else
          {
+             if(fm.GetAllUser(txtPseudoCo.getText()))
+             {
+                 JOptionPane.showMessageDialog(this,"Utilisateur deja existant","erreur",JOptionPane.PLAIN_MESSAGE);
+             }
+             else
+             {
               fm.InsertUser(txtPseudoCo.getText(),txtMdp.getText());
               JOptionPane.showMessageDialog(this,"Utilisateur enregistré","Validation",JOptionPane.PLAIN_MESSAGE);
                //pour rediriger vers une autre page
@@ -194,6 +191,7 @@ public class frmInscription extends javax.swing.JFrame {
 //                {
 //                    JOptionPane.showMessageDialog(this, "Votre mot de passe n'est pas correct ");
 //                }
+             }
          }
       
         

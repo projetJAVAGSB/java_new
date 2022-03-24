@@ -16,6 +16,7 @@ import java.util.ArrayList;
         //fonction connexion et inscrit+ption : 
         public User GetUnUser(String login, String mdp);
         public void InsertUser(String pseudoUser, String mdpUser);
+        public boolean GetAllUser(String pseudoUser);
         
         
         

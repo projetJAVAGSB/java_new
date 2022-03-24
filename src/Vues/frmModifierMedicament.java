@@ -6,6 +6,7 @@
 package Vues;
 
 import Entity.ConnexionBDD;
+import Entity.Famille;
 import Entity.FonctionMetier;
 import Entity.Individu;
 import Entity.Medicament;
@@ -49,11 +50,11 @@ public class frmModifierMedicament extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnValider = new javax.swing.JButton();
-        txtFamille = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEffet = new javax.swing.JTextArea();
         txtContre = new javax.swing.JScrollPane();
         txtContre1 = new javax.swing.JTextArea();
+        cbFamille = new javax.swing.JComboBox<>();
 
         jTextField1.setText("jTextField1");
 
@@ -116,11 +117,13 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(14, 14, 14)))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(161, 161, 161)
+                        .addComponent(cbFamille, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel2)
                         .addGap(56, 56, 56)
@@ -134,13 +137,8 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(txtFamille, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtContre)))))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtContre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 101, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(269, 269, 269)
@@ -167,7 +165,7 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtFamille, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbFamille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtContre, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
@@ -193,7 +191,14 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     txtNom.setText(leMedoc.getNomCommercial());
     txtPrix.setText(String.valueOf(leMedoc.getPrixEchantillion()));
     txtEffet.setText(leMedoc.getEffets());
-    txtFamille.setText(leMedoc.getFamille());
+     ConnexionBDD cnx = new ConnexionBDD();
+             fm = new FonctionMetier();
+             
+             for(Famille f : fm.getAllNomFamille())
+             {
+                cbFamille.addItem(f.getLIBELLE());
+                 
+             }
     txtContre1.setText(leMedoc.getContreIndication());
     
      
@@ -257,6 +262,7 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnValider;
+    private javax.swing.JComboBox<String> cbFamille;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -270,7 +276,6 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     private javax.swing.JScrollPane txtContre;
     private javax.swing.JTextArea txtContre1;
     private javax.swing.JTextArea txtEffet;
-    private javax.swing.JTextField txtFamille;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtPrix;
     // End of variables declaration//GEN-END:variables
