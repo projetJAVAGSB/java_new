@@ -251,8 +251,6 @@ public class FonctionMetier implements IMetier
         rs.next();
         int numCodeMedoc = rs.getInt(1);
         
-        
-        
          ps = cnx.prepareStatement("SELECT TIN_CODE from type_individu WHERE TIN_LIBELLE = '"+TIN_LIBELLE+"'");
          rs = ps.executeQuery();
         rs.next();
@@ -461,7 +459,14 @@ public class FonctionMetier implements IMetier
     {
            try {
             Connection cnx = ConnexionBDD.getCnx();
-            PreparedStatement ps = cnx.prepareStatement("update medicament m INNER join famille f set  m.nomcommercial='"+ unNom +"',m.composition='"+ uneCompo +"',m.prixechantillon ="+unPrix+", m.effets='"+ unEffet +"', m.contreindic='"+ unContreIndi +"', f.libelle='"+ uneFamille +"' where m.DEPOTLEGAL="+unDepo);
+            PreparedStatement ps = cnx.prepareStatement("SELECT code  from famille WHERE libelle = '"+uneFamille+"'");
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            int numFamille = rs.getInt(1);
+            
+            
+            
+            ps = cnx.prepareStatement("update medicament as m set m.NOMCOMMERCIAL='"+unNom+"', m.COMPOSITION='"+uneCompo+"',m.PRIXECHANTILLON ="+unPrix+", m.EFFETS='"+unEffet+"',m.CODE ="+numFamille+", m.CONTREINDIC='"+unContreIndi+"' where m.DEPOTLEGAL="+unDepo+"");
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);

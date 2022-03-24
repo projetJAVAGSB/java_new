@@ -56,12 +56,12 @@ public class frmPrescription extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Prescription");
 
-        jLabel2.setText("Selectionner un médicament : ");
+        jLabel2.setText("Sélectionner un médicament : ");
 
-        jLabel3.setText("Selectionner le type d'invidivu : ");
+        jLabel3.setText("Sélectionner le type d'invidivu : ");
         jLabel3.setToolTipText("");
 
-        jLabel4.setText("Selectionner un dosage : ");
+        jLabel4.setText("Sélectionner un dosage : ");
 
         jLabel5.setText("Posologie : ");
 
@@ -199,11 +199,11 @@ public class frmPrescription extends javax.swing.JFrame {
         
         if(cbxDosage.getSelectedItem().toString().compareTo("")==0)
         {
-            JOptionPane.showMessageDialog(this, "Séléctionner une dose ");       
+            JOptionPane.showMessageDialog(this, "Sélectionner une Dose ");       
         }
         else if(cbxMed.getSelectedItem().toString().compareTo("")==0)
         {
-            JOptionPane.showMessageDialog(this, "Séléctionner un medicament ");       
+            JOptionPane.showMessageDialog(this, "Sélectionner un Medicament ");       
         }
         
         else if(txtPosologie.getText().compareTo("") == 0)

@@ -61,7 +61,7 @@ public class frmListerMedicament extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Medicaments");
+        jLabel1.setText("Médicaments");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Liste des médicaments");
@@ -87,7 +87,7 @@ public class frmListerMedicament extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nom Medicament", "Famille", "Prix echantillions", "composition", "Effets", "Contre indications"
+                "Nom Médicament", "Famille", "Prix échantillion", "composition", "Effets", "Contre indications"
             }
         ));
         jScrollPane2.setViewportView(tblInfos);

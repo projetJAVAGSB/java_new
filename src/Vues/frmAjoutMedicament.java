@@ -80,7 +80,7 @@ public class frmAjoutMedicament extends javax.swing.JFrame {
         btnEnregistre.setBackground(new java.awt.Color(0, 0, 0));
         btnEnregistre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEnregistre.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnregistre.setText("Enregistré");
+        btnEnregistre.setText("Enregistrer");
         btnEnregistre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         btnEnregistre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,23 +183,23 @@ public class frmAjoutMedicament extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtCompo.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "Veuillez saisir une Composition svp svp "); 
+            JOptionPane.showMessageDialog(this, "Veuillez saisir une Composition svp. "); 
         }
         else if(txtNomMed.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "Veuillez saisir un Nom svp "); 
+            JOptionPane.showMessageDialog(this, "Veuillez saisir un Nom svp. "); 
         }
         else if(txtPrix.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "Veuillez saisir un Prix svp "); 
+            JOptionPane.showMessageDialog(this, "Veuillez saisir un Prix svp. "); 
         }
         else if(txtEffets.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "Veuillez saisir un effet svp "); 
+            JOptionPane.showMessageDialog(this, "Veuillez saisir un Effet svp. "); 
         }
         else if(txtContreIn.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "Veuillez saisir une contre indication svp "); 
+            JOptionPane.showMessageDialog(this, "Veuillez saisir une Contre indication svp. "); 
         }
         else
         {
@@ -213,7 +213,7 @@ public class frmAjoutMedicament extends javax.swing.JFrame {
             
             //on affiche un message de validation 
             
-            JOptionPane.showMessageDialog(this, "Votre Médicament a bien été enregistré ");
+            JOptionPane.showMessageDialog(this, "Votre Médicament a bien été enregistré. ");
             frmListerMedicament frm = new frmListerMedicament();
             
             frm.setVisible(true);

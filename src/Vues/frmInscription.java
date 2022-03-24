@@ -63,7 +63,7 @@ public class frmInscription extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Inscription");
 
         jLabel2.setText("Pseudo : ");
@@ -103,7 +103,7 @@ public class frmInscription extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtPseudoCo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 128, Short.MAX_VALUE))))
+                                        .addGap(0, 35, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,7 +135,7 @@ public class frmInscription extends javax.swing.JFrame {
                 .addComponent(lblMess, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,7 +155,7 @@ public class frmInscription extends javax.swing.JFrame {
          if(txtPseudoCo.getText().compareTo("") == 0)
         {
         
-            JOptionPane.showMessageDialog(this,"Saisir un identifiant","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Saisir un Identifiant","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
         }
 //           else if(txtEmailCo.getText().compareTo("") == 0)
 //        {
@@ -174,7 +174,7 @@ public class frmInscription extends javax.swing.JFrame {
          {
              if(fm.GetAllUser(txtPseudoCo.getText()))
              {
-                 JOptionPane.showMessageDialog(this,"Utilisateur deja existant","erreur",JOptionPane.PLAIN_MESSAGE);
+                 JOptionPane.showMessageDialog(this,"Utilisateur déjà éxistant","Erreur",JOptionPane.PLAIN_MESSAGE);
              }
              else
              {

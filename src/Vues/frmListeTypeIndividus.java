@@ -212,14 +212,14 @@ public class frmListeTypeIndividus extends javax.swing.JFrame {
         
          if(txtLabelleInserer.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this,"Saisir un libelle ","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Saisir un Libelle ","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
         }
         else
         {
             fm.InsererIndividu(txtLabelleInserer.getText());
            //mdlIndividu = new ModelIndividu();
             
-            JOptionPane.showMessageDialog(this,"Type d'individu ajouter avec succes","Validation",JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Type d'Individu ajouté avec succès","Validation",JOptionPane.PLAIN_MESSAGE);
             
              
         mdlIndividu = new ModelIndividu();

@@ -47,11 +47,16 @@ public class frmMenuChoix extends javax.swing.JFrame {
                 btnInteractionMouseClicked(evt);
             }
         });
+        btnInteraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInteractionActionPerformed(evt);
+            }
+        });
 
         btnDeconnexion.setBackground(new java.awt.Color(0, 0, 0));
         btnDeconnexion.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         btnDeconnexion.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeconnexion.setText("Deconnexion");
+        btnDeconnexion.setText("Déconnexion");
         btnDeconnexion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 10, true));
         btnDeconnexion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -62,7 +67,7 @@ public class frmMenuChoix extends javax.swing.JFrame {
         btnMedicament.setBackground(new java.awt.Color(0, 0, 0));
         btnMedicament.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         btnMedicament.setForeground(new java.awt.Color(255, 255, 255));
-        btnMedicament.setText("Medicament");
+        btnMedicament.setText("Médicaments");
         btnMedicament.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 10, true));
         btnMedicament.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,11 +94,16 @@ public class frmMenuChoix extends javax.swing.JFrame {
         btnStat.setBackground(new java.awt.Color(0, 0, 0));
         btnStat.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         btnStat.setForeground(new java.awt.Color(255, 255, 255));
-        btnStat.setText("Statistique ");
+        btnStat.setText("Statistiques");
         btnStat.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 10, true));
         btnStat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnStatMouseClicked(evt);
+            }
+        });
+        btnStat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatActionPerformed(evt);
             }
         });
 
@@ -203,6 +213,19 @@ public class frmMenuChoix extends javax.swing.JFrame {
     private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMedicamentActionPerformed
+
+    private void btnInteractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInteractionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInteractionActionPerformed
+
+    private void btnStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatActionPerformed
+
+        frmStat frm = new frmStat();
+            
+            frm.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStatActionPerformed
 
     /**
      * @param args the command line arguments

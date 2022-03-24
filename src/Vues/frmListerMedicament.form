@@ -100,7 +100,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Medicaments"/>
+        <Property name="text" type="java.lang.String" value="M&#xe9;dicaments"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -145,9 +145,9 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="true" title="Nom Medicament" type="java.lang.Object"/>
+                <Column editable="true" title="Nom M&#xe9;dicament" type="java.lang.Object"/>
                 <Column editable="true" title="Famille" type="java.lang.Object"/>
-                <Column editable="true" title="Prix echantillions" type="java.lang.Object"/>
+                <Column editable="true" title="Prix &#xe9;chantillion" type="java.lang.Object"/>
                 <Column editable="true" title="composition" type="java.lang.Object"/>
                 <Column editable="true" title="Effets" type="java.lang.Object"/>
                 <Column editable="true" title="Contre indications" type="java.lang.Object"/>

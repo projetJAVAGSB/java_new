@@ -157,7 +157,7 @@ public class frmConnexion extends javax.swing.JFrame {
 //vérification d'une connexion, s'il n'existe pas : 
         if (txtPseudoCo.getText().compareTo("") == 0)
         {
-            lblMess.setText("Saisir un login ");
+            lblMess.setText("Saisir un Pseudo ");
         }
         else if (txtPseudoCo.getText().compareTo("") ==0)
         {
@@ -169,7 +169,7 @@ public class frmConnexion extends javax.swing.JFrame {
           User unUser = fm.GetUnUser(txtPseudoCo.getText(), txtMdpCo.getText());
           if(unUser == null)
           {
-              JOptionPane.showMessageDialog(this, " Identifiant incorrect");
+              JOptionPane.showMessageDialog(this, " Identifiant Incorrect");
               txtPseudoCo.setText("");
               txtMdpCo.setText("");
           }

@@ -48,6 +48,7 @@ public class frmStat extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cboActions = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -76,52 +77,59 @@ public class frmStat extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Le nombre de prescritption par medicament");
+        jLabel1.setText("Le nombre de prescritption par médicament :");
 
-        jLabel2.setText("Repartition des medicaments par famille");
+        jLabel2.setText("Répartition des médicaments par famille :");
 
-        jLabel3.setText("Le nombre de prescritption par medicament");
+        jLabel3.setText("Le nombre de prescritption par médicament :");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setText("Statistiques : ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap(342, Short.MAX_VALUE)
+                .addComponent(cboActions, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGraph2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(btnGraph3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGraph1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(cboActions, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                            .addComponent(btnGraph2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnGraph3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
+                .addComponent(btnGraph1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGraph1)
+                    .addComponent(jLabel2)
                     .addComponent(cboActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(btnGraph2)
-                .addGap(26, 26, 26)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btnGraph3)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -152,7 +160,7 @@ public class frmStat extends javax.swing.JFrame {
             
          source1.setValue( g.getNbPrescription(),cboActions.getSelectedItem().toString(),String.valueOf(g.getLblMedicament()));
         }
-        JFreeChart chart2= ChartFactory.createLineChart("le nombre de prescritption par medicament ", "médicament", "nombres", source1);
+        JFreeChart chart2= ChartFactory.createLineChart("le nombre de prescritption par médicament ", "médicament", "nombres", source1);
         ChartFrame fra = new ChartFrame("Graphique n°1", chart2);
         fra.pack();
         fra.setVisible(true);
@@ -171,7 +179,7 @@ public class frmStat extends javax.swing.JFrame {
         }
 
         JFreeChart chart1 = ChartFactory.createPieChart(
-        "repartition des medicaments par famille",
+        "répartition des médicaments par famille",
         donnees,
         true, // légende
         true, // info bulle
@@ -201,9 +209,9 @@ public class frmStat extends javax.swing.JFrame {
         }
         
         JFreeChart chart1 = ChartFactory.createBarChart(
-        "Nombre de medicament par famille",
+        "Nombre de médicament par famille",
         "Nom des types",
-        "Nombre medicament",
+        "Nombre médicaments",
         donnees,
         PlotOrientation.VERTICAL,
         true, true, false);
@@ -269,5 +277,6 @@ public class frmStat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,6 +48,7 @@ public class frmInteraction1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(121, 483));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -59,7 +60,7 @@ public class frmInteraction1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Depot legal", "Médicament perturber"
+                "Dépot légal", "Médicament perturbé"
             }
         ));
         jScrollPane1.setViewportView(tblMedPerturber);
@@ -69,7 +70,7 @@ public class frmInteraction1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Depot legal", "Nom Médicament"
+                "Dépot légal", "Nom Médicament"
             }
         ));
         tblListeAllMed.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +80,13 @@ public class frmInteraction1 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblListeAllMed);
 
-        btnInteragir.setText("ajouter interaction");
+        btnInteragir.setBackground(new java.awt.Color(0, 0, 0));
+        btnInteragir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInteragir.setForeground(new java.awt.Color(255, 255, 255));
+        btnInteragir.setText("Ajouter Interaction");
+        btnInteragir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnInteragir.setMaximumSize(new java.awt.Dimension(133, 25));
+        btnInteragir.setMinimumSize(new java.awt.Dimension(133, 25));
         btnInteragir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInteragirMouseClicked(evt);
@@ -91,19 +98,19 @@ public class frmInteraction1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Depot legal", "Médicament non concérné"
+                "Dépot légal", "Médicament non concérné"
             }
         ));
         jScrollPane3.setViewportView(tblMedNonPerturber);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Interaction");
+        jLabel1.setText("Interactions");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Liste Médicament : ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Médicaments  Interdit : ");
+        jLabel3.setText("Médicaments  Interdits : ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Médicaments Autorisés :");
@@ -154,7 +161,7 @@ public class frmInteraction1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addComponent(btnInteragir)
+                        .addComponent(btnInteragir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

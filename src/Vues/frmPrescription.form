@@ -102,18 +102,18 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Selectionner un m&#xe9;dicament : "/>
+        <Property name="text" type="java.lang.String" value="S&#xe9;lectionner un m&#xe9;dicament : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Selectionner le type d&apos;invidivu : "/>
+        <Property name="text" type="java.lang.String" value="S&#xe9;lectionner le type d&apos;invidivu : "/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Selectionner un dosage : "/>
+        <Property name="text" type="java.lang.String" value="S&#xe9;lectionner un dosage : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
