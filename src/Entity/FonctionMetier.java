@@ -459,31 +459,14 @@ public class FonctionMetier implements IMetier
     public void modifierMedoc(int unDepo, String unNom, String uneCompo, float unPrix, String unEffet, String uneFamille, String unContreIndi) {
                  Medicament m = null;
     {
-        try 
-        {
-            Connection c = ConnexionBDD.getCnx();
-            PreparedStatement ps = c.prepareStatement("select m.nomcommercial ,m.composition, m.prixechantillon,m.effets,m.contreindic, f.libelle from medicament m inner join famille f on m.DEPOTLEGAL = f.CODE where m.DEPOTLEGAL= "+unDepo);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-
-            ps.close();
-            ps = c.prepareStatement("update medicament set  m.nomcommercial='"+ unNom +"',m.composition='"+ uneCompo +"'m.prixechantillon ="+unPrix+" m.effets='"+ unEffet +"'m.contreindic='"+ unContreIndi +"' f.libelle='"+ uneFamille +"' where DEPOTLEGAL="+unDepo);
-            //ps.setString(1, nomMedicament);
-            //ps.setInt(1, unDepo);
-            ps.setString(1, unNom);
-            ps.setFloat(2, unPrix);
-            ps.setString(3, unEffet);
-           
-            ps.execute();
-            System.out.println(ps);  
-           m = new Medicament( rs.getString("m.nomcommercial"), rs.getString("COMPOSITION"), rs.getInt("m.prixechantillon"), rs.getString("COMPOSITION"), rs.getString("EFFETS"), rs.getString("CONTREINDIC"));
-
-        } 
-        catch(SQLException exception) 
-        {
-            Logger.getLogger(ConnexionBDD.class.getName()).log(Level.SEVERE, null, exception);  
-            
+           try {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("update medicament m INNER join famille f set  m.nomcommercial='"+ unNom +"',m.composition='"+ uneCompo +"',m.prixechantillon ="+unPrix+", m.effets='"+ unEffet +"', m.contreindic='"+ unContreIndi +"', f.libelle='"+ uneFamille +"' where m.DEPOTLEGAL="+unDepo);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         
     }
 

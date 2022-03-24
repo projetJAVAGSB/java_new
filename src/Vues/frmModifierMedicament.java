@@ -55,6 +55,8 @@ public class frmModifierMedicament extends javax.swing.JFrame {
         txtContre = new javax.swing.JScrollPane();
         txtContre1 = new javax.swing.JTextArea();
         cbFamille = new javax.swing.JComboBox<>();
+        txtId = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -101,10 +103,27 @@ public class frmModifierMedicament extends javax.swing.JFrame {
         txtContre1.setRows(5);
         txtContre.setViewportView(txtContre1);
 
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Id");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnValider, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(294, 294, 294))
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -115,46 +134,45 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                             .addGap(14, 14, 14)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(14, 14, 14)))
+                        .addGap(14, 14, 14))
+                    .addComponent(jLabel8))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(161, 161, 161)
-                        .addComponent(cbFamille, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel2)
-                        .addGap(56, 56, 56)
-                        .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addComponent(jLabel6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)))
-                        .addGap(18, 18, 18)
-                        .addComponent(txtContre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(161, 161, 161)
+                            .addComponent(cbFamille, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(34, 34, 34)
+                            .addComponent(jLabel2)
+                            .addGap(56, 56, 56)
+                            .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(222, 222, 222)
+                                    .addComponent(jLabel6))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7)))
+                            .addGap(18, 18, 18)
+                            .addComponent(txtContre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 101, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnValider, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(294, 294, 294))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,11 +204,16 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
 
-
+    txtId.setText(String.valueOf(leMedoc.getDepotLegal()));
     txtComp.setText(leMedoc.getContreIndication());
     txtNom.setText(leMedoc.getNomCommercial());
     txtPrix.setText(String.valueOf(leMedoc.getPrixEchantillion()));
     txtEffet.setText(leMedoc.getEffets());
+    //cbLibelle.setText(leMedoc.getFamille());
+    txtContre1.setText(leMedoc.getContreIndication());
+    
+    
+    
      ConnexionBDD cnx = new ConnexionBDD();
              fm = new FonctionMetier();
              
@@ -199,9 +222,6 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                 cbFamille.addItem(f.getLIBELLE());
                  
              }
-    txtContre1.setText(leMedoc.getContreIndication());
-    
-     
         
 
         
@@ -214,17 +234,17 @@ public class frmModifierMedicament extends javax.swing.JFrame {
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
 
-//        //fm.InsererUnMedicament(txtComp.getText(),txtNom.getText(), Float.parseFloat(txtPrix.getText()), txtEffet.getText(),txtFamille.getText(),txtContre1.getText());
-//        fm.modifierMedoc(txtNom.getText(),txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(),txtContre1.getText(), txtFamille.getText());
-//        JOptionPane.showMessageDialog(this,"Votre médicament a bien été modifier","Validation",JOptionPane.PLAIN_MESSAGE);
-//
-//
-//
-
+fm.modifierMedoc(Integer.parseInt(txtId.getText()),txtNom.getText(), txtComp.getText(), Float.parseFloat(txtPrix.getText()), txtEffet.getText(),cbFamille.getSelectedItem().toString(),txtContre1.getText());
+       // fm.modifierMedoc(txtNom.getText(),txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(),txtContre1.getText(), txtFamille.getText());
+        JOptionPane.showMessageDialog(this,"Votre médicament a bien été modifier","Validation",JOptionPane.PLAIN_MESSAGE);
 
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnValiderMouseClicked
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,12 +290,14 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtComp;
     private javax.swing.JScrollPane txtContre;
     private javax.swing.JTextArea txtContre1;
     private javax.swing.JTextArea txtEffet;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtPrix;
     // End of variables declaration//GEN-END:variables
