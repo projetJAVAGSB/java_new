@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 23 mars 2022 à 21:49
+-- Généré le : lun. 28 mars 2022 à 16:21
 -- Version du serveur :  10.4.18-MariaDB
 -- Version de PHP : 8.0.3
 
@@ -175,6 +175,7 @@ INSERT INTO `interagir` (`PERTURBATEUR`, `PERTURBER`) VALUES
 (1, 4),
 (1, 6),
 (1, 7),
+(2, 4),
 (5, 6),
 (6, 1),
 (10, 5),
@@ -224,6 +225,7 @@ INSERT INTO `medicament` (`DEPOTLEGAL`, `NOMCOMMERCIAL`, `COMPOSITION`, `EFFETS`
 --
 
 CREATE TABLE `prescrire` (
+  `num_prescrire` int(11) NOT NULL,
   `CODE` int(5) NOT NULL,
   `DOS_CODE` int(10) NOT NULL,
   `DEPOTLEGAL` int(10) NOT NULL,
@@ -234,40 +236,43 @@ CREATE TABLE `prescrire` (
 -- Déchargement des données de la table `prescrire`
 --
 
-INSERT INTO `prescrire` (`CODE`, `DOS_CODE`, `DEPOTLEGAL`, `POSSOLOGIE`) VALUES
-(1, 1, 1, 'test1'),
-(1, 1, 2, 'test1'),
-(1, 1, 3, 'test3'),
-(1, 1, 4, 'test david'),
-(1, 2, 3, 'test20'),
-(1, 6, 3, 'test20'),
-(1, 13, 5, 'test20'),
-(1, 13, 10, 'Prendre 2 comprimé tout les 4heures. Ne '),
-(2, 1, 3, 'test3'),
-(2, 4, 3, 'test3'),
-(2, 7, 3, 'test3'),
-(2, 7, 5, 'Prendre 2 sachets par jour'),
-(2, 7, 8, 'test6'),
-(2, 7, 12, 'test6'),
-(3, 1, 2, 'test7'),
-(3, 1, 7, 'test9'),
-(3, 5, 12, 'test10'),
-(3, 6, 1, 'test23 '),
-(3, 7, 1, 'test7'),
-(3, 8, 1, 'test24'),
-(4, 4, 7, 'test45'),
-(4, 5, 1, 'test11'),
-(4, 5, 4, 'test12'),
-(4, 7, 7, 'test46'),
-(4, 7, 11, 'test14'),
-(4, 14, 7, 'Prendre 1comprimé 3fois par jour '),
-(5, 3, 7, 'test15'),
-(5, 3, 9, 'test15'),
-(5, 4, 9, 'test45'),
-(5, 4, 10, 'test46'),
-(5, 8, 10, 'test46'),
-(5, 9, 10, 'test47'),
-(5, 11, 10, 'test48');
+INSERT INTO `prescrire` (`num_prescrire`, `CODE`, `DOS_CODE`, `DEPOTLEGAL`, `POSSOLOGIE`) VALUES
+(1, 1, 1, 1, 'test1'),
+(2, 1, 1, 2, 'test1'),
+(3, 1, 1, 3, 'test3'),
+(4, 1, 1, 4, 'test david'),
+(5, 1, 2, 3, 'test20'),
+(6, 1, 6, 3, 'test20'),
+(7, 1, 13, 5, 'test20'),
+(8, 1, 13, 10, 'Prendre 2 comprimé tout les 4heures. Ne '),
+(9, 2, 1, 3, 'test3'),
+(10, 2, 4, 3, 'test3'),
+(11, 2, 7, 3, 'test3'),
+(12, 2, 7, 5, 'Prendre 2 sachets par jour'),
+(13, 2, 7, 8, 'test6'),
+(14, 2, 7, 12, 'test6'),
+(15, 3, 1, 2, 'test7'),
+(16, 3, 1, 7, 'test9'),
+(17, 3, 5, 12, 'test10'),
+(18, 3, 6, 1, 'test23 '),
+(19, 3, 7, 1, 'test7'),
+(20, 3, 8, 1, 'test24'),
+(21, 4, 4, 7, 'test45'),
+(22, 4, 5, 1, 'test11'),
+(23, 4, 5, 4, 'test12'),
+(24, 4, 7, 7, 'test46'),
+(25, 4, 7, 11, 'test14'),
+(26, 4, 14, 7, 'Prendre 1comprimé 3fois par jour '),
+(27, 5, 3, 7, 'test15'),
+(28, 5, 3, 9, 'test15'),
+(29, 5, 4, 9, 'test45'),
+(30, 5, 4, 10, 'test46'),
+(31, 5, 8, 10, 'test46'),
+(32, 5, 9, 10, 'test47'),
+(33, 5, 11, 10, 'test48'),
+(34, 5, 1, 2, 'test80'),
+(35, 5, 1, 2, 'test81'),
+(36, 5, 1, 2, 'test82');
 
 -- --------------------------------------------------------
 
@@ -340,7 +345,9 @@ INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`) VALUES
 (78, 'azertyu', 'zertyu'),
 (79, 'orel', 'azerty'),
 (81, 'medecin', 'admin'),
-(82, 'David', '1234');
+(82, 'David', '1234'),
+(83, 'David', '1234'),
+(84, 'jacobux', '1234');
 
 --
 -- Index pour les tables déchargées
@@ -384,7 +391,9 @@ ALTER TABLE `formuler`
 ALTER TABLE `interagir`
   ADD PRIMARY KEY (`PERTURBATEUR`,`PERTURBER`),
   ADD KEY `PERTURBATEUR` (`PERTURBATEUR`),
-  ADD KEY `PERTURBER` (`PERTURBER`);
+  ADD KEY `PERTURBER` (`PERTURBER`),
+  ADD KEY `PERTURBATEUR_2` (`PERTURBATEUR`),
+  ADD KEY `PERTURBER_2` (`PERTURBER`);
 
 --
 -- Index pour la table `medicament`
@@ -397,9 +406,10 @@ ALTER TABLE `medicament`
 -- Index pour la table `prescrire`
 --
 ALTER TABLE `prescrire`
-  ADD PRIMARY KEY (`CODE`,`DOS_CODE`,`DEPOTLEGAL`),
+  ADD PRIMARY KEY (`num_prescrire`),
   ADD KEY `DEPOTLEGAL` (`DEPOTLEGAL`),
-  ADD KEY `DOS_CODE` (`DOS_CODE`);
+  ADD KEY `DOS_CODE` (`DOS_CODE`),
+  ADD KEY `CODE` (`CODE`);
 
 --
 -- Index pour la table `presentation`
@@ -451,7 +461,7 @@ ALTER TABLE `medicament`
 -- AUTO_INCREMENT pour la table `prescrire`
 --
 ALTER TABLE `prescrire`
-  MODIFY `DEPOTLEGAL` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `num_prescrire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `type_individu`
@@ -463,7 +473,7 @@ ALTER TABLE `type_individu`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- Contraintes pour les tables déchargées
@@ -488,11 +498,19 @@ ALTER TABLE `formuler`
   ADD CONSTRAINT `formuler_ibfk_1` FOREIGN KEY (`DEPOTLEGAL`) REFERENCES `medicament` (`DEPOTLEGAL`);
 
 --
+-- Contraintes pour la table `interagir`
+--
+ALTER TABLE `interagir`
+  ADD CONSTRAINT `interagir_ibfk_1` FOREIGN KEY (`PERTURBATEUR`) REFERENCES `medicament` (`DEPOTLEGAL`),
+  ADD CONSTRAINT `interagir_ibfk_2` FOREIGN KEY (`PERTURBER`) REFERENCES `medicament` (`DEPOTLEGAL`);
+
+--
 -- Contraintes pour la table `prescrire`
 --
 ALTER TABLE `prescrire`
-  ADD CONSTRAINT `prescrire_ibfk_2` FOREIGN KEY (`DOS_CODE`) REFERENCES `dosage` (`CODE`),
-  ADD CONSTRAINT `prescrire_ibfk_4` FOREIGN KEY (`DEPOTLEGAL`) REFERENCES `medicament` (`DEPOTLEGAL`);
+  ADD CONSTRAINT `prescrire_ibfk_1` FOREIGN KEY (`DOS_CODE`) REFERENCES `dosage` (`CODE`),
+  ADD CONSTRAINT `prescrire_ibfk_2` FOREIGN KEY (`DEPOTLEGAL`) REFERENCES `medicament` (`DEPOTLEGAL`),
+  ADD CONSTRAINT `prescrire_ibfk_3` FOREIGN KEY (`CODE`) REFERENCES `famille` (`CODE`);
 
 --
 -- Contraintes pour la table `presentation`
