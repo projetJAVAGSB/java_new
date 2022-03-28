@@ -54,6 +54,18 @@ public class ModelMedicament extends AbstractTableModel
         }
         fireTableChanged(null);
     }
+    public void loadDatas5Colonnes(ArrayList<Medicament> lesMedicaments)
+    {
+        rows = new Vector<>();
+        nomsColonnes = new String[]{"Numéro", "Nom" ,"Composition","Effets","Contre indications","Prix echantillions"};
+        for (Medicament m : lesMedicaments)
+        {
+            rows.add(new String[]{String.valueOf(m.getDepotLegal()),m.getNomCommercial(),m.getComposition(),m.getEffets(),m.getContreIndication(),String.valueOf(m.getPrixEchantillion())});
+            //rows.add(new String[]{m.getNomCommercial(),String.valueOf(m.getFamille()),String.valueOf(m.getPrixEchantillion()),m.getComposition(),m.getEffets(),m.getContreIndication()});
+            //Mettre les int en string et enlever les string pour ceux pas besoin 
+        }
+        fireTableChanged(null);
+    }
     public void loadDatas2Colonnes(ArrayList<Medicament> lesMedicaments)
     {
         rows = new Vector<>();

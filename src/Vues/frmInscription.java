@@ -45,7 +45,6 @@ public class frmInscription extends javax.swing.JFrame {
         txtMdp = new javax.swing.JPasswordField();
         txtConf = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

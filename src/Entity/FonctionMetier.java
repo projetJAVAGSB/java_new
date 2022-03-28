@@ -261,7 +261,7 @@ public class FonctionMetier implements IMetier
         rs.next();
         int numDose = rs.getInt(1);
         //ps = cnx.prepareStatement("insert into prescrire("+numTypeeIndividu+",'"+numDose+"','"+numCodeMedoc+"','"+posologie);
-        ps = cnx.prepareStatement("insert into prescrire values ("+numTypeeIndividu+","+numDose+","+numCodeMedoc+",'"+posologie+"')");
+        ps = cnx.prepareStatement("insert into prescrire values (null,"+numTypeeIndividu+","+numDose+","+numCodeMedoc+",'"+posologie+"')");
         
 //        select m.NOMCOMMERCIAL, t.tin_libelle, d.forme, p.possologie from medicament m inner join prescrire p on m.DEPOTLEGAL = p.CODE inner JOIN type_individu t on p.CODE = t.TIN_CODE INNER JOIN dosage d on p.CODE = d.CODE'"
         ps.executeUpdate();
@@ -444,8 +444,9 @@ public class FonctionMetier implements IMetier
         rs.next() ;
         
          //m = new Medicament(rs.getInt("DEPOTLEGAL"), rs.getString("NOMCOMMERCIAL"), rs.getString("COMPOSITION"), rs.getString("EFFETS"), rs.getString("CONTREINDIC"), rs.getFloat("PRIXECHANTILLON"), rs.getInt("CODE"));
-         m = new Medicament(rs.getInt("DEPOTLEGAL"), rs.getString("NOMCOMMERCIAL"), rs.getString("COMPOSITION"), rs.getInt("CODE"), rs.getString("COMPOSITION"), rs.getString("EFFETS"), rs.getString("CONTREINDIC"));
-
+         m = new Medicament(rs.getInt("DEPOTLEGAL"), rs.getString("NOMCOMMERCIAL"), rs.getString("COMPOSITION"),rs.getFloat("PRIXECHANTILLON"), rs.getString("COMPOSITION"),rs.getString("EFFETS"), rs.getString("CONTREINDIC") );
+//         m = new Medicament(rs.getInt("DEPOTLEGAL"), rs.getString("NOMCOMMERCIAL"), rs.getString("COMPOSITION"), rs.getInt("CODE"), rs.getString("COMPOSITION"), rs.getString("EFFETS"), rs.getString("CONTREINDIC"));
+                                //"Numéro", "Nom" ,"Composition","Effets","Contre indications","Prix echantillions"};
      
      }  catch (SQLException ex) {
             Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -454,19 +455,16 @@ public class FonctionMetier implements IMetier
     }
 
     @Override
-    public void modifierMedoc(int unDepo, String unNom, String uneCompo, float unPrix, String unEffet, String uneFamille, String unContreIndi) {
+    public void modifierMedoc(int unDepo, String unNom, String uneCompo,float unPrix, String unEffet,  String unContreIndi) {
                  Medicament m = null;
     {
            try {
             Connection cnx = ConnexionBDD.getCnx();
-            PreparedStatement ps = cnx.prepareStatement("SELECT code  from famille WHERE libelle = '"+uneFamille+"'");
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            int numFamille = rs.getInt(1);
+            PreparedStatement 
             
             
             
-            ps = cnx.prepareStatement("update medicament as m set m.NOMCOMMERCIAL='"+unNom+"', m.COMPOSITION='"+uneCompo+"',m.PRIXECHANTILLON ="+unPrix+", m.EFFETS='"+unEffet+"',m.CODE ="+numFamille+", m.CONTREINDIC='"+unContreIndi+"' where m.DEPOTLEGAL="+unDepo+"");
+            ps = cnx.prepareStatement("update medicament as m set m.NOMCOMMERCIAL='"+unNom+"', m.COMPOSITION='"+uneCompo+"',m.PRIXECHANTILLON ="+unPrix+", m.EFFETS='"+unEffet+"', m.CONTREINDIC='"+unContreIndi+"' where m.DEPOTLEGAL="+unDepo+"");
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(FonctionMetier.class.getName()).log(Level.SEVERE, null, ex);

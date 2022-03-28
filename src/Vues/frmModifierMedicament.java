@@ -47,14 +47,12 @@ public class frmModifierMedicament extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtPrix = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnValider = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEffet = new javax.swing.JTextArea();
         txtContre = new javax.swing.JScrollPane();
         txtContre1 = new javax.swing.JTextArea();
-        cbFamille = new javax.swing.JComboBox<>();
         txtId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
 
@@ -62,6 +60,9 @@ public class frmModifierMedicament extends javax.swing.JFrame {
 
         setAlwaysOnTop(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -77,8 +78,6 @@ public class frmModifierMedicament extends javax.swing.JFrame {
         jLabel4.setText("Prix échantillion : ");
 
         jLabel5.setText("Effet du Médicament : ");
-
-        jLabel6.setText("Famille Médicament : ");
 
         jLabel7.setText("Contre Indication : ");
 
@@ -140,11 +139,8 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(14, 14, 14)))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(161, 161, 161)
-                        .addComponent(cbFamille, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
@@ -152,14 +148,9 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addComponent(jLabel6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(txtContre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 101, Short.MAX_VALUE))
@@ -182,9 +173,7 @@ public class frmModifierMedicament extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(cbFamille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtContre, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
@@ -205,25 +194,16 @@ public class frmModifierMedicament extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
 
-    txtId.setText(String.valueOf(leMedoc.getDepotLegal()));
+       fm = new FonctionMetier();
+        
+         txtId.setText(String.valueOf(leMedoc.getDepotLegal()));
     txtComp.setText(leMedoc.getContreIndication());
     txtNom.setText(leMedoc.getNomCommercial());
-    txtPrix.setText(String.valueOf(leMedoc.getPrixEchantillion()));
+    
     txtEffet.setText(leMedoc.getEffets());
     //cbLibelle.setText(leMedoc.getFamille());
     txtContre1.setText(leMedoc.getContreIndication());
-    
-    
-    
-     ConnexionBDD cnx = new ConnexionBDD();
-             fm = new FonctionMetier();
-             
-             for(Famille f : fm.getAllNomFamille())
-             {
-                cbFamille.addItem(f.getLIBELLE());
-                 
-             }
-        
+    txtPrix.setText(String.valueOf(leMedoc.getPrixEchantillion()));
 
         
 
@@ -235,7 +215,8 @@ public class frmModifierMedicament extends javax.swing.JFrame {
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
 
-fm.modifierMedoc(Integer.parseInt(txtId.getText()),txtNom.getText(), txtComp.getText(), Float.parseFloat(txtPrix.getText()), txtEffet.getText(),cbFamille.getSelectedItem().toString(),txtContre1.getText());
+// // m = new Medicament(rs.getInt("DEPOTLEGAL"), rs.getString("NOMCOMMERCIAL"), rs.getString("COMPOSITION"),rs.getFloat("PRIXECHANTILLON"), rs.getString("COMPOSITION"),rs.getString("EFFETS"), rs.getString("CONTREINDIC") );
+        fm.modifierMedoc(Integer.parseInt(txtId.getText()),txtNom.getText(), txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(), txtContre1.getText() );
        // fm.modifierMedoc(txtNom.getText(),txtComp.getText(),Float.parseFloat(txtPrix.getText()),txtEffet.getText(),txtContre1.getText(), txtFamille.getText());
         JOptionPane.showMessageDialog(this,"Votre médicament a bien été modifié","Validation",JOptionPane.PLAIN_MESSAGE);
 
@@ -246,6 +227,25 @@ fm.modifierMedoc(Integer.parseInt(txtId.getText()),txtNom.getText(), txtComp.get
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    
+    
+    
+    
+//     ConnexionBDD cnx = new ConnexionBDD();
+//             
+//             
+//             for(Famille f : fm.getAllNomFamille())
+//             {
+//                cbFamille.addItem(f.getLIBELLE());
+//                 
+//             }
+        
+        
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -283,13 +283,11 @@ fm.modifierMedoc(Integer.parseInt(txtId.getText()),txtNom.getText(), txtComp.get
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnValider;
-    private javax.swing.JComboBox<String> cbFamille;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;

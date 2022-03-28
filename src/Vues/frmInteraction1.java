@@ -9,6 +9,7 @@ import Entity.ConnexionBDD;
 import Entity.FonctionMetier;
 import Model.ModelMedicament;
 import static java.lang.Float.parseFloat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -228,30 +229,40 @@ public class frmInteraction1 extends javax.swing.JFrame {
 
     private void btnInteragirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInteragirMouseClicked
         // TODO add your handling code here:
-        int numMedocPerturbateur = Integer.parseInt(tblMedNonPerturber.getValueAt(tblMedNonPerturber.getSelectedRow(), 0).toString());
-        int numMedocperturber = Integer.parseInt(tblListeAllMed.getValueAt(tblListeAllMed.getSelectedRow(), 0).toString());
         
         
-        fm.InsererInteraction(numMedocPerturbateur, numMedocperturber);
+         if(tblMedNonPerturber.getSelectedRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this,"Sélectionner un médicament et le nouveau perturbateur","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
         
-        
-        // une fois que la requette a été faite on reactualise les deux tableau
-        ConnexionBDD cnx = new ConnexionBDD() ;
-        // On crée notre objet FonctionsMetier
-        fm = new FonctionMetier();
-        // On crée notre modelJeux
-        mdlMedicament = new ModelMedicament();
-        // On charge les données dans le modèle
-        
-        int numMedoc = Integer.parseInt(tblListeAllMed.getValueAt(tblListeAllMed.getSelectedRow(), 0).toString());
-        
-        mdlMedicament.loadDatas2Colonnes(fm.getAllMedicamentsPerturber(numMedoc));
-        // On met à jour le modèle du JTable
-        tblMedPerturber.setModel(mdlMedicament);
-        
-        mdlMedicament2 = new ModelMedicament();
-        mdlMedicament2.loadDatas2Colonnes(fm.getAllMedicamentsNonPerturber(numMedoc));
-        tblMedNonPerturber.setModel(mdlMedicament2);
+            int numMedocPerturbateur = Integer.parseInt(tblMedNonPerturber.getValueAt(tblMedNonPerturber.getSelectedRow(), 0).toString());
+            int numMedocperturber = Integer.parseInt(tblListeAllMed.getValueAt(tblListeAllMed.getSelectedRow(), 0).toString());
+
+
+            fm.InsererInteraction(numMedocPerturbateur, numMedocperturber);
+
+
+            // une fois que la requette a été faite on reactualise les deux tableau
+            ConnexionBDD cnx = new ConnexionBDD() ;
+            // On crée notre objet FonctionsMetier
+            fm = new FonctionMetier();
+            // On crée notre modelJeux
+            mdlMedicament = new ModelMedicament();
+            // On charge les données dans le modèle
+
+            int numMedoc = Integer.parseInt(tblListeAllMed.getValueAt(tblListeAllMed.getSelectedRow(), 0).toString());
+
+            mdlMedicament.loadDatas2Colonnes(fm.getAllMedicamentsPerturber(numMedoc));
+            // On met à jour le modèle du JTable
+            tblMedPerturber.setModel(mdlMedicament);
+
+            mdlMedicament2 = new ModelMedicament();
+            mdlMedicament2.loadDatas2Colonnes(fm.getAllMedicamentsNonPerturber(numMedoc));
+            tblMedNonPerturber.setModel(mdlMedicament2);
+        }
         
     }//GEN-LAST:event_btnInteragirMouseClicked
 

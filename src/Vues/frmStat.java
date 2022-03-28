@@ -209,7 +209,7 @@ public class frmStat extends javax.swing.JFrame {
         }
         
         JFreeChart chart1 = ChartFactory.createBarChart(
-        "Nombre de médicament par famille",
+        "Nombre de médicament par Type d individue",
         "Nom des types",
         "Nombre médicaments",
         donnees,

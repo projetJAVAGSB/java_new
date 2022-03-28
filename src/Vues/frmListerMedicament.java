@@ -10,6 +10,7 @@ import Entity.ConnexionBDD;
 import Entity.FonctionMetier;
 import Entity.Medicament;
 import Model.ModelMedicament;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,15 +139,21 @@ public class frmListerMedicament extends javax.swing.JFrame {
 
     private void btnModiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModiMouseClicked
 
-        
-        Medicament medoc = fm.getLeMedicament(Integer.parseInt(tblInfos.getValueAt(tblInfos.getSelectedRow(), 0).toString()));
-        
-        
-          frmModifierMedicament frm = new frmModifierMedicament(medoc);
-        frm.setVisible(true);
+         if(tblInfos.getSelectedRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this,"Sélectionner un médicament","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            Medicament medoc = fm.getLeMedicament(Integer.parseInt(tblInfos.getValueAt(tblInfos.getSelectedRow(), 0).toString()));
 
 
-        // TODO add your handling code here:
+              frmModifierMedicament frm = new frmModifierMedicament(medoc);
+            frm.setVisible(true);
+
+
+            // TODO add your handling code here:
+        }
         
     }//GEN-LAST:event_btnModiMouseClicked
 
