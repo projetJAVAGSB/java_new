@@ -165,13 +165,13 @@ public class frmInscription extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Saisir un mot de passe ","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
         }
-         else if (txtConf.getText() == txtMdp.getText())
+         else if (txtConf.getText().compareTo("") == 0)
          {
-             JOptionPane.showMessageDialog(this,"Le Mot de passe incorrect !");
+             JOptionPane.showMessageDialog(this,"saisir mdp confirmation !","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
          }
-         else
+         else if (txtMdp.getText().compareTo(txtConf.getText())==0)
          {
-             if(fm.GetAllUser(txtPseudoCo.getText()))
+            if(fm.GetAllUser(txtPseudoCo.getText()))
              {
                  JOptionPane.showMessageDialog(this,"Utilisateur déjà éxistant","Erreur",JOptionPane.PLAIN_MESSAGE);
              }
@@ -179,18 +179,13 @@ public class frmInscription extends javax.swing.JFrame {
              {
               fm.InsertUser(txtPseudoCo.getText(),txtMdp.getText());
               JOptionPane.showMessageDialog(this,"Utilisateur enregistré","Validation",JOptionPane.PLAIN_MESSAGE);
-               //pour rediriger vers une autre page
-//               frmMenuChoix frm = new frmMenuChoix();
-//               frm.setVisible(true);
-//                if(txtConf.getText() == txtMdp.getText())
-//                {
-//               
-//                 }
-//                else
-//                {
-//                    JOptionPane.showMessageDialog(this, "Votre mot de passe n'est pas correct ");
-//                }
-             }
+            
+             }  
+         }
+         else
+         {
+            
+             JOptionPane.showMessageDialog(this,"Le Mot de passe incorrect !");
          }
       
         
